@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web apps</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>  
+    <div class="welcome">
+        <img id="welcomeImg" src="logo_dsgn.png" alt="">
+        <div class="kata-kata">
+            <h1>Selamat datang di website saya</h1>
+            <p>Web Apps</p>
+        </div>
+    </div>
+    <div class="create-new">
+        <h1>New Document</h1>
+        <hr style="border: 0.5px solid black;">
+        <form class="preset-detail">
+            <label for="name-file">
+                <p>Name File</p>
+                <input type="text" name="name" placeholder="Input name file" value="Untilted-1" class="name-preset">
+            </label>
+            <label for="width">
+                <p>Width</p>
+                <input type="number"id="width" name="width" value="5">
+            </label>
+            <label for="height">
+                <p>Height</p>
+                <input type="number"id="height"value="5" name="height" >
+            </label>
+            <div class="btn">
+                <button type="submit" class="create">Create</button>
+            </div>
+        </form>
+    </div>
+    <div class="workspace">
+        <div class="kertas">
+            <h1>Ini projek saya : <span>radit</span></h1>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
