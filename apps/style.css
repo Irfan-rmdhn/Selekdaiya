@@ -75,6 +75,7 @@ body {
     background-color: #535353;
     display: none;
     width: 700px;
+    justify-content: space-between;
     height: 650px;
     padding: 20px;
 }
@@ -286,7 +287,11 @@ body {
     cursor: pointer;
     height: 35px;
 }
-
+.anu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 .main-workspace {
     background-color: var(--abu-abu-lebih-gelap);
     display: flex;
@@ -323,9 +328,7 @@ body {
 
 .canvas-workspace {
     background-color: white;
-    width: 1024px;
-    height: 600px;
-}
+}   
 
 .footer-workspace div {
     display: flex;

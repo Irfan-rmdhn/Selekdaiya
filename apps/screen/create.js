@@ -1,22 +1,18 @@
 class Create {
     constructor(screen) {
         this.el = document.querySelector('.screen.create-new')
+        this.formCreateNew = document.querySelector('.preset-detail')
     }
     mount() {
         this.el.classList.add('active')
-        const formCreateNew = document.querySelector('.preset-detail')
-        const kertas = document.querySelector('.kertas')
-        formCreateNew.addEventListener('submit', (e) => {
+        this.formCreateNew.addEventListener('submit', (e) => {
             e.preventDefault()
             const value = Object.fromEntries(new FormData(e.target))
+            useScreen.workspace.nameFile = value.name
+            useScreen.workspace.width = value.width
+            useScreen.workspace.height = value.height
             useScreen.changeScreen('workspace')
-            // kertas.style.display = 'flex'
-            kertas.style.width = value.width + "px"
-            kertas.style.height = value.height + "px"
-            kertas.querySelector('span').value = value.name
         })
-
-
     }
     unmount() {
         this.el.classList.remove('active')

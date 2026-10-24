@@ -8,14 +8,11 @@ class Welcome {
         const welcomeText = document.querySelector('.kata-kata')
         
         const createNew = document.querySelector('.create-new')
-        const workspace = document.querySelector('.workspace')
         setTimeout(() => {
             welcomeImg.style.display = 'none'
             welcomeText.style.display = 'none'
             useScreen.changeScreen('create')
-            createNew.style.display = 'block'
-            workspace.style.display = 'block'
-        }, 4000);
+        }, 3000);
     }
     unmount() {
         this.el.classList.remove('active')
