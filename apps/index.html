@@ -7,14 +7,14 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>  
-    <div class="welcome">
+    <div class="screen welcome">
         <img id="welcomeImg" src="logo_dsgn.png" alt="">
         <div class="kata-kata">
             <h1>Selamat datang di website saya</h1>
             <p>Web Apps</p>
         </div>
     </div>
-    <div class="create-new">
+    <div class="screen create-new">
         <h1>New Document</h1>
         <hr style="border: 0.5px solid black;">
         <form class="preset-detail">
@@ -35,11 +35,132 @@
             </div>
         </form>
     </div>
-    <div class="workspace">
-        <div class="kertas">
-            <h1>Ini projek saya : <span>radit</span></h1>
+    <div class="screen workspace">
+        <div class="kiri-workspace">
+            <div class="kiri-atas-workspace">
+                <img src="logo_dsgn.png" width="45%" alt="">
+                <div class="toolbar-atas-workspace">
+                    <h2>brush</h2>
+                    <h2>bucket</h2>
+                    <h2>eraser</h2>
+                    <h2>text</h2>
+                    <h2>move</h2>
+                    <h2>stamp</h2>
+                    <h2>picker</h2>
+                    <h2>shape</h2>
+                </div>
+            </div>
+            <div class="kiri-bawah-workspace">
+                    <h2>Paste</h2>
+                    <div class="toolbar-bawah-workspace">
+                        <h2 style="display: flex; flex-direction: column;">undo <span>2</span></h2>
+                        <h2 style="display: flex; flex-direction: column;">redo <span>2</span></h2>
+                        <h2 style="display: flex; flex-direction: column;">-<span>zoom</span></h2>
+                        <h2 style="display: flex; flex-direction: column;">+<span>zoom</span></h2>
+                        <h2>import</h2>
+                        <h2>export</h2>
+                    </div>
+            </div>
+        </div>
+        <div class="kanan-workspace">
+            <header class="head-workspace">
+                <div class="shape">
+                    <h1>Shape :</h1>
+                    <h2>●</h2>
+                    <h2>■</h2>
+                </div>
+                <div class="size">
+                    <h1>Size : </h1>
+                    <input type="range" name="size" value="20" min="1" max="1000" id="range">
+                    <h2>20 <span>px</span></h2>
+                </div>
+                <div class="opacity">
+                    <h1>Opacity : </h1>
+                    <h2>100</h2>
+                    <h2>50</h2>
+                    <h2>0</h2>
+                </div>
+            </header>
+            <div class="main-workspace">
+                <div class="tengah-workspace">
+                    <div class="outer-workspace">
+                        <canvas class="canvas-workspace">
+                            
+                        </canvas>
+                    </div>
+                    <div class="footer-workspace">
+                        <div class="size-canvas">
+                            <h2>Size : </h2>
+                            <p>1024</p>
+                            <p>x</p>
+                            <p>600</p>
+                        </div>
+                        <div class="zoom-canvas">
+                            <h2>Zoom : </h2>
+                            <p>85%</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="kanan-main-workspace">
+                    <div class="tool-brush">
+                        <div class="color-preview">
+                            <h2>Colour : </h2>
+                            <div class="preview">
+
+                            </div>
+                        </div>
+                        <div class="color-picker">
+                            <label for="red">
+                                <h2>Red</h2>
+                                <input type="range" name="red" id="red" min="0" max="255">
+                            </label>
+                            <label for="green">
+                                <h2>Green</h2>
+                                <input type="range" name="green" id="green" min="0" max="255">
+                            </label>
+                            <label for="blue">
+                                <h2>Blue</h2>
+                                <input type="range" name="blue" id="blue" min="0" max="255">
+                            </label>
+                        </div>
+                        <div class="display-brush">
+                            <div class="list-display-brush">
+                                <h2>brightness</h2>
+                                <h2>saturation</h2>
+                                <h2>greyscale</h2>
+                                <h2>opacity</h2>
+                            </div>
+                            <label class="intensity" for="intensity">
+                                <P>intensity</P>
+                                <input type="range" name="intensity" min="1" max="255" id="">
+                            </label>
+                            <h2 class="duplicate">Duplicate</h2>
+                        </div>
+
+                    </div>
+                    <div class="layer-bar">
+                        <div class="layer-item">
+                            <h2>Hide</h2>
+                            <p>Layer 2</p>
+                        </div>
+                        <div class="layer-item">
+                            <h2>Hide</h2>
+                            <p>Layer 2</p>
+                        </div>
+                        <div class="layer-item">
+                            <h2>Hide</h2>
+                            <p>Layer 2</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
+    <script src="screen/create.js"></script>
+    <script src="screen/welcome.js"></script>
+    <script src="screen/workspace.js"></script>
+    <script src="screen/screen.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
