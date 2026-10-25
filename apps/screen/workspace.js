@@ -8,7 +8,6 @@ class Workspace {
     this.canvasHeight = 500;
     this.sizeCanvasWidthEl = document.querySelector("#size-width");
     this.sizeCanvasHeightEl = document.querySelector("#size-height");
-
     this.toolbar = document
       .querySelector(".toolbar-atas-workspace")
       .querySelectorAll("h2");
@@ -17,7 +16,6 @@ class Workspace {
     this.el.classList.add("active");
     this.NewLayer();
     this.initCanvas();
-    this.pickOpacity()
     this.pickToolbar();
   }
   NewLayer() {
@@ -51,8 +49,8 @@ class Workspace {
         }
         if (this.toolbarActive == "brush") {
           this.pickShape();
-          this.gambarCanvas();
-          this.pickOpacity()
+          this.controllCanvas();
+          this.pickOpacity();
         }
       };
     });
@@ -84,51 +82,68 @@ class Workspace {
       };
     });
   }
-  pickOpacity(){
-    this.opacity = document.querySelector('.opacity').querySelectorAll('h2')
-    this.opacityActive = '1'
-    this.opacity.forEach((opacity)=>{
-        if(opacity.dataset.opacity == '1'){
-            opacity.classList.add('opacity-pick')
-        }
-        opacity.onclick = (()=>{
-            if(this.opacityActive){
-                this.opacity.forEach((itwm)=>{
-                    itwm.classList.remove('opacity-pick')
-                    this.opacityActive = opacity.dataset.opacity
-                    opacity.classList.add('opacity-pick')
-                })
-            }
-            console.log(this.opacityActive);
-        })
-    })
-  }
-  gambarCanvas() {
-    this.ctx.beginPath();
-    this.canvas.addEventListener("mousemove", (e) => {
-      if (this.shapeActive == "kotak") {
-        this.ctx.globalAlpha = this.opacityActive
-        this.ctx.fillStyle = "red";
-        this.ctx.fillRect(
-          e.offsetX,
-          e.offsetY,
-          this.sizeText.textContent,
-          this.sizeText.textContent,
-        );
-      } else {
-        this.ctx.globalAlpha = this.opacityActive
-        this.ctx.beginPath();
-        this.ctx.arc(
-          e.offsetX,
-          e.offsetY,
-          this.sizeText.textContent,
-          0,
-          Math.PI * 2,
-        );
-        this.ctx.fillStyle = "red";
-        this.ctx.fill();
+  pickOpacity() {
+    this.opacity = document.querySelector(".opacity").querySelectorAll("h2");
+    this.opacityActive = "1";
+    this.opacity.forEach((opacity) => {
+      if (opacity.dataset.opacity == "1") {
+        opacity.classList.add("opacity-pick");
       }
+      opacity.onclick = () => {
+        if (this.opacityActive) {
+          this.opacity.forEach((itwm) => {
+            itwm.classList.remove("opacity-pick");
+            this.opacityActive = opacity.dataset.opacity;
+            opacity.classList.add("opacity-pick");
+          });
+        }
+        console.log(this.opacityActive);
+      };
     });
+  }
+  controllCanvas() {
+    this.Isdrawing = false;
+    this.canvas.onmousedown = (e) => {
+      this.Isdrawing = true;
+      console.log(this.Isdrawing);
+    };
+    this.canvas.onmouseup = (e) => {
+      this.Isdrawing = false;
+    };
+    console.log(this.Isdrawing);
+    this.canvas.onmousemove = (e) => {
+      if (this.Isdrawing) {
+        this.gambarCanvas(e.offsetX, e.offsetY);
+      }
+    };
+  }
+  gambarCanvas(offsetX, offsetY) {
+    if (this.shapeActive == "kotak") {
+      this.ctx.globalAlpha = this.opacityActive;
+      this.ctx.fillStyle = "red";
+      this.ctx.fillRect(
+        offsetX,
+        offsetY,
+        this.sizeText.textContent,
+        this.sizeText.textContent,
+      );
+      if (this.toolbarActive == "eraser") {
+        this.ctx.globalCompositeOperation = "destination-out";
+      } else {
+        return;
+      }
+    } else {
+      this.ctx.globalAlpha = this.opacityActive;
+      this.ctx.beginPath();
+      this.ctx.arc(offsetX, offsetY, this.sizeText.textContent, 0, Math.PI * 2);
+      this.ctx.fillStyle = "red";
+      this.ctx.fill();
+      if (this.toolbarActive == "eraser") {
+        this.ctx.globalCompositeOperation = "destination-out";
+      } else {
+        return;
+      }
+    }
   }
   initCanvas() {
     this.sizeCanvasWidthEl.textContent = this.canvasWidth;
