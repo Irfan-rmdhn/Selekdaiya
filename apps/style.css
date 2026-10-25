@@ -502,3 +502,12 @@ body {
     width: 15%;
     border-radius: 5px;
 }
+.toolbar-pick{
+    background-color: var(--pink-bold) !important;
+}
+.shape-pick{
+    background-color: var(--pink-bold) !important  ;
+}
+.opacity-pick{
+    background-color: var(--pink-bold) !important  ;
+}

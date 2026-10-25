@@ -66,19 +66,19 @@
             <header class="head-workspace">
                 <div class="shape">
                     <h1>Shape :</h1>
-                    <h2>●</h2>
-                    <h2>■</h2>
+                    <h2 data-shape="bulat">●</h2>
+                    <h2 data-shape="kotak">■</h2>
                 </div>
                 <div class="size">
                     <h1>Size : </h1>
-                    <input type="range" name="size" value="20" min="1" max="100" id="range">
+                    <input type="range" name="size" value="20" min="1" max="100" id="size-brush">
                     <h2>20 <span>px</span></h2>
                 </div>
                 <div class="opacity">
                     <h1>Opacity : </h1>
-                    <h2>100</h2>
-                    <h2>50</h2>
-                    <h2>0</h2>
+                    <h2 data-opacity="1">100</h2>
+                    <h2 data-opacity="0.5">50</h2>
+                    <h2 data-opacity="0">0</h2>
                 </div>
                 
             </header>
@@ -92,9 +92,9 @@
                     <div class="footer-workspace">
                         <div class="size-canvas">
                             <h2>Size : </h2>
-                            <p>1024</p>
+                            <p id="size-width">1024</p>
                             <p>x</p>
-                            <p>600</p>
+                            <p id="size-height">600</p>
                         </div>
                         <div class="zoom-canvas">
                             <h2>Zoom : </h2>
@@ -140,18 +140,7 @@
 
                     </div>
                     <div class="layer-bar">
-                        <div class="layer-item">
-                            <h2>Hide</h2>
-                            <p>Layer 2</p>
-                        </div>
-                        <div class="layer-item">
-                            <h2>Hide</h2>
-                            <p>Layer 2</p>
-                        </div>
-                        <div class="layer-item">
-                            <h2>Hide</h2>
-                            <p>Layer 2</p>
-                        </div>
+
                     </div>
                 </div>
             </div>
