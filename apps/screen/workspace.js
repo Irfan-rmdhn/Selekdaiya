@@ -17,6 +17,8 @@ class Workspace {
     this.NewLayer();
     this.initCanvas();
     this.pickToolbar();
+    this.colorPicker()
+    this.TextProperties()
   }
   NewLayer() {
     this.item = `
@@ -51,6 +53,9 @@ class Workspace {
           this.pickShape();
           this.controllCanvas();
           this.pickOpacity();
+        }
+        if (this.toolbarActive == 'text') {
+          this.InputText()
         }
       };
     });
@@ -105,24 +110,90 @@ class Workspace {
     this.Isdrawing = false;
     this.canvas.onmousedown = (e) => {
       this.Isdrawing = true;
-      console.log(this.Isdrawing);
+      this.gambarCanvas(e.offsetX, e.offsetY);
     };
     this.canvas.onmouseup = (e) => {
       this.Isdrawing = false;
     };
-    console.log(this.Isdrawing);
     this.canvas.onmousemove = (e) => {
       if (this.Isdrawing) {
         this.gambarCanvas(e.offsetX, e.offsetY);
       }
     };
   }
+  colorPicker() {
+    this.red = document.querySelector('#red')
+    this.green = document.querySelector('#green')
+    this.blue = document.querySelector('#blue')
+    this.preview = document.querySelector('.preview')
+    this.warna = `rgb(${this.red.value}, ${this.green.value}, ${this.blue.value})`
+    this.preview.style.backgroundColor = this.warna
+    this.red.addEventListener('input', (e) => {
+      this.warna = `rgb(${this.red.value}, ${this.green.value}, ${this.blue.value})`
+      this.preview.style.backgroundColor = this.warna
+    })
+    this.green.addEventListener('input', (e) => {
+      this.warna = `rgb(${this.red.value}, ${this.green.value}, ${this.blue.value})`
+      this.preview.style.backgroundColor = this.warna
+    })
+    this.blue.addEventListener('input', (e) => {
+      this.warna = `rgb(${this.red.value}, ${this.green.value}, ${this.blue.value})`
+      this.preview.style.backgroundColor = this.warna
+    })
+
+  }
+  TextProperties() {
+    this.propertiesText = document.querySelector('.properties-text')
+    // this.propertiesText.style.display = 'flex'
+    this.fontFaces = 'Arial'
+    this.typeFaces = document.querySelector('#font-faces')
+    this.typeFaces.addEventListener('change', (e) => {
+      this.fontFaces = e.target.value
+    })
+    this.fontStyle = document.querySelector('.font-style').querySelectorAll('h2')
+    this.fontStyle.forEach((font) => {
+      console.log(font);
+      font.onclick = ((e) => {
+        font.classList.add('')
+      })
+    })
+  }
+  InputText() {
+    this.textEl = document.querySelector('.text-tool')
+    this.newText = 'raditkontol'
+    this.exx = 200
+    this.yee = 200
+    this.canvas.onclick = ((canvas) => {
+      this.exx = canvas.offsetX
+      this.yee = canvas.offsetY
+      this.textEl.style.left = canvas.clientX + 'px'
+      this.textEl.style.top = canvas.clientY + 'px'
+      this.textEl.style.display = 'flex'
+      this.textEl.focus()
+      this.propertiesText.style.display = 'flex'
+      this.propertiesText.style.left = canvas.clientX + 'px'
+      this.propertiesText.style.top = (canvas.clientY + 50) + 'px'
+    })
+    this.textEl.addEventListener('keydown', (e) => {
+      if (e.code == 'Enter') {
+        this.newText = e.target.value
+        this.textEl.style.display = 'none'
+        this.propertiesText.style.display = 'none'
+        this.textEl.value = ''
+        this.gambarText(this.exx, this.yee)
+      }
+    })
+  }
+  gambarText(x, y) {
+    this.ctx.font = `Bold 30px ${this.fontFaces}`
+    this.ctx.fillText(this.newText, x, y)
+  }
   gambarCanvas(offsetX, offsetY) {
     if (this.shapeActive == "kotak") {
       this.ctx.globalAlpha = this.opacityActive;
-      this.ctx.fillStyle = "red";
+      this.ctx.fillStyle = this.warna;
       this.ctx.fillRect(
-        offsetX,
+        offsetX - 10,
         offsetY,
         this.sizeText.textContent,
         this.sizeText.textContent,
@@ -136,7 +207,7 @@ class Workspace {
       this.ctx.globalAlpha = this.opacityActive;
       this.ctx.beginPath();
       this.ctx.arc(offsetX, offsetY, this.sizeText.textContent, 0, Math.PI * 2);
-      this.ctx.fillStyle = "red";
+      this.ctx.fillStyle = this.warna;
       this.ctx.fill();
       if (this.toolbarActive == "eraser") {
         this.ctx.globalCompositeOperation = "destination-out";
