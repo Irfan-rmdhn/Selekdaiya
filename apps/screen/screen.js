@@ -12,4 +12,4 @@ class Screen {
         this.anu.mount()
     }
 }
-const useScreen = new Screen('workspace')
+const useScreen = new Screen('welcome')

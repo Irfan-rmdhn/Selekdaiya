@@ -9,8 +9,8 @@ class Create {
             e.preventDefault()
             const value = Object.fromEntries(new FormData(e.target))
             useScreen.workspace.nameFile = value.name
-            useScreen.workspace.width = value.width
-            useScreen.workspace.height = value.height
+            useScreen.workspace.canvasWidth = value.width
+            useScreen.workspace.canvasHeight = value.height
             useScreen.changeScreen('workspace')
         })
     }
