@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web apps</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>  
+
+<body>
     <div class="screen welcome">
         <img id="welcomeImg" src="logo_dsgn.png" alt="">
         <div class="kata-kata">
@@ -24,11 +26,11 @@
             </label>
             <label for="width">
                 <p>Width</p>
-                <input type="number"id="width" name="width" value="5">
+                <input type="number" id="width" name="width" value="5">
             </label>
             <label for="height">
                 <p>Height</p>
-                <input type="number"id="height"value="5" name="height" >
+                <input type="number" id="height" value="5" name="height">
             </label>
             <div class="btn">
                 <button type="submit" class="create">Create</button>
@@ -51,15 +53,15 @@
                 </div>
             </div>
             <div class="kiri-bawah-workspace">
-                    <h2>Paste</h2>
-                    <div class="toolbar-bawah-workspace">
-                        <h2 style="display: flex; flex-direction: column;">undo <span>2</span></h2>
-                        <h2 style="display: flex; flex-direction: column;">redo <span>2</span></h2>
-                        <h2 style="display: flex; flex-direction: column;">-<span>zoom</span></h2>
-                        <h2 style="display: flex; flex-direction: column;">+<span>zoom</span></h2>
-                        <h2>import</h2>
-                        <h2>export</h2>
-                    </div>
+                <h2>Paste</h2>
+                <div class="toolbar-bawah-workspace">
+                    <h2 style="display: flex; flex-direction: column;">undo <span>2</span></h2>
+                    <h2 style="display: flex; flex-direction: column;">redo <span>2</span></h2>
+                    <h2 style="display: flex; flex-direction: column;">-<span>zoom</span></h2>
+                    <h2 style="display: flex; flex-direction: column;">+<span>zoom</span></h2>
+                    <h2>import</h2>
+                    <h2 id="export">export</h2>
+                </div>
             </div>
         </div>
         <div class="kanan-workspace">
@@ -71,7 +73,7 @@
                 </div>
                 <div class="size">
                     <h1>Size : </h1>
-                    <input type="range" name="size" value="20" min="1" max="100" id="size-brush">
+                    <input type="range" name="size" value="8" min="1" max="100" id="size-brush">
                     <h2>20 <span>px</span></h2>
                 </div>
                 <div class="opacity">
@@ -80,13 +82,13 @@
                     <h2 data-opacity="0.5">50</h2>
                     <h2 data-opacity="0">0</h2>
                 </div>
-                
+
             </header>
             <div class="main-workspace">
                 <div class="tengah-workspace">
                     <div class="outer-workspace">
                         <canvas class="canvas-workspace">
-                            
+
                         </canvas>
                     </div>
                     <div class="footer-workspace">
@@ -113,15 +115,15 @@
                         <div class="color-picker">
                             <label for="red">
                                 <h2>Red</h2>
-                                <input type="range" name="red" id="red" min="0" max="255">
+                                <input type="range" name="red" value="0" id="red" min="0" max="255">
                             </label>
                             <label for="green">
                                 <h2>Green</h2>
-                                <input type="range" name="green" id="green" min="0" max="255">
+                                <input type="range" name="green" value="0" id="green" min="0" max="255">
                             </label>
                             <label for="blue">
                                 <h2>Blue</h2>
-                                <input type="range" name="blue" id="blue" min="0" max="255">
+                                <input type="range" name="blue" value="0" id="blue" min="0" max="255">
                             </label>
                         </div>
                         <div class="display-brush">
@@ -166,11 +168,14 @@
             <h2>Underline</h2>
         </div>
     </div>
-    <input type="text" style="border: none;background-color: transparent;color: black;position: absolute;display: none;width: 100px;" class="text-tool" placeholder="Text">
+    <input type="text"
+        value="Lorem Ipsum" style="border: none;background-color: transparent;color: black;position: absolute;display: none;width: 100px;"
+        class="text-tool" placeholder="Text">
     <script src="screen/create.js"></script>
     <script src="screen/welcome.js"></script>
     <script src="screen/workspace.js"></script>
     <script src="screen/screen.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>

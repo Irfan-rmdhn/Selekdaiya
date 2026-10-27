@@ -1,3 +1,4 @@
+const IsiItem = []
 class Workspace {
   constructor(screen) {
     this.el = document.querySelector(".screen.workspace");
@@ -14,22 +15,29 @@ class Workspace {
   }
   mount() {
     this.el.classList.add("active");
-    this.NewLayer();
-    this.initCanvas();
-    this.pickToolbar();
-    this.colorPicker()
-    this.TextProperties()
-  }
-  NewLayer() {
+    this.containerLayer = document.querySelector(".layer-bar");
+    this.layerBarItem = document.createElement("div");
     this.item = `
     <div class="layer-item">
     <h2>Hide</h2>
     <p>Background</p>
     </div>`;
-    this.containerLayer = document.querySelector(".layer-bar");
-    this.layerBarItem = document.createElement("div");
-    this.layerBarItem.innerHTML = this.item;
-    this.containerLayer.appendChild(this.layerBarItem);
+    IsiItem.push(this.item)
+    this.NewLayer();
+    this.initCanvas();
+    this.pickToolbar();
+    this.colorPicker()
+    this.TextProperties()
+    this.SaveJpg()
+  }
+  NewLayer() {
+    this.containerLayer.innerHTML = ''
+    IsiItem.forEach((itemLayer) => {
+      const layerbaR = document.createElement('div')
+      layerbaR.innerHTML = itemLayer
+      this.containerLayer.append(layerbaR);
+    })
+    console.log(IsiItem);
   }
   pickToolbar() {
     this.toolbarActive = "";
@@ -144,6 +152,8 @@ class Workspace {
   }
   TextProperties() {
     this.propertiesText = document.querySelector('.properties-text')
+    this.fontSize = document.querySelector('.font-size').querySelector('input')
+
     // this.propertiesText.style.display = 'flex'
     this.fontFaces = 'Arial'
     this.typeFaces = document.querySelector('#font-faces')
@@ -151,10 +161,23 @@ class Workspace {
       this.fontFaces = e.target.value
     })
     this.fontStyle = document.querySelector('.font-style').querySelectorAll('h2')
+    this.styleActive = ''
     this.fontStyle.forEach((font) => {
       console.log(font);
       font.onclick = ((e) => {
-        font.classList.add('')
+        if (this.styleActive == '') {
+          font.classList.add('style-pick')
+          this.styleActive = font.textContent
+          console.log(this.styleActive);
+        } else {
+          this.styleActive = ''
+          this.fontStyle.forEach((item) => {
+            item.classList.remove('style-pick')
+          })
+          this.styleActive = font.textContent
+          console.log(this.styleActive);
+          font.classList.add('style-pick')
+        }
       })
     })
   }
@@ -177,15 +200,24 @@ class Workspace {
     this.textEl.addEventListener('keydown', (e) => {
       if (e.code == 'Enter') {
         this.newText = e.target.value
+        const teksLayer10 = this.newText
         this.textEl.style.display = 'none'
         this.propertiesText.style.display = 'none'
-        this.textEl.value = ''
+        this.textEl.value = 'Lorem Ipsum'
+        this.items = `
+        <div class="layer-item">
+        <h2>Hide</h2>
+        <p>${teksLayer10.slice(0, 10)}</p>
+        </div>`;
+        IsiItem.push(this.items)
+        this.NewLayer()
         this.gambarText(this.exx, this.yee)
+        console.log(this.fontSize.value)
       }
     })
   }
   gambarText(x, y) {
-    this.ctx.font = `Bold 30px ${this.fontFaces}`
+    this.ctx.font = `${this.styleActive} ${this.fontSize.value}px ${this.fontFaces}`;
     this.ctx.fillText(this.newText, x, y)
   }
   gambarCanvas(offsetX, offsetY) {
@@ -222,6 +254,16 @@ class Workspace {
     this.canvas.width = this.canvasWidth;
     this.canvas.height = this.canvasHeight;
   }
+  SaveJpg() {
+  const anu = document.querySelector("#export");
+  anu.addEventListener("click", (e) => {
+    e.preventDefault();
+    const link = document.createElement("a");
+    link.download = `${this.nameFile}.jpg`;
+    link.href = this.canvas.toDataURL("image/jpeg", 0.9);
+    link.click();
+  });
+}
   unmount() {
     this.el.classList.remove("active");
   }
