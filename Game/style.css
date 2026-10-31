@@ -1,0 +1,205 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    color: white;
+    align-items: center;
+    background-color: rgb(8, 9, 63);
+}
+.screen{
+    display: none;
+}
+.active{
+    width: 1000px;
+    height: 600px;
+    display: flex !important;
+}
+.welcome{
+    display: none;
+    background-color: rgb(49, 47, 141);
+    flex-direction: column;
+    border: 1px solid black;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.548);
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.form-game{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px
+}
+.form-game input{
+    width: 70%;
+    height: 50px;
+}
+.form-game select{
+    width: 70%;
+    height: 50px;
+}
+.form-game .btn {
+    display: flex;
+    gap: 20px;
+}
+.form-game .btn button{
+    height: 50px;
+    padding: 5px;
+}
+.play{
+    background-color: rgb(95, 121, 233);
+    color: white;
+    border: none;
+    border-radius: 2px;
+}
+.instruction{
+    background-color: rgb(41, 136, 81);
+    color: white;
+    border: none;
+    border-radius: 2px;
+}
+.balls img{
+    width: 40%;
+    padding: 5px;
+}
+.ball-pick{
+    width: 40%;
+    border: 1px solid rgba(0, 0, 0, 0.507);
+    border-radius: 50%;
+    background-color: rgb(38, 68, 168);
+    padding: 5px;
+}
+.ins{
+    display: none;
+    position: absolute;
+    width: 1000px;
+    height: 600px;
+    justify-content: center;
+    padding: 20px;
+    align-items: center;
+    gap: 30px;
+    user-select: none;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.76);
+}
+.bendera{
+    display: flex;
+    gap: 10px;
+    width: 70% ;
+}
+#random-enemy{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    border-radius: 2px;
+    background-color: darkgreen;
+    color: white;
+    border: none;
+}
+.ins ul{
+    list-style: decimal;
+}
+.play:disabled{
+    opacity: 0.5;
+}
+.count{
+    display: none;
+    font-size: 250px;
+    justify-content: center;
+    align-items: center;
+}
+
+.flag-game{
+    display: flex;
+    width: 100%;
+    height: 60px;
+    position: absolute;
+    top: 63.5%;
+}
+.flag-game img{
+    border: 0.5px solid rgba(0, 0, 0, 0.89);
+}
+.main{
+    background-image: url(GAME_MEDIA/Sprites/background2.jpg);
+    background-size: 100% 100%;
+    position: relative;
+    overflow: hidden;
+    display: none;
+    color: black;
+    padding: 20px;
+    justify-content: space-between;
+}
+.tengah{
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100px;    
+}
+.score{
+    background-color: navy;
+    width: 30%;
+    color: white;
+    justify-content: space-evenly;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    flex-direction: row !important;
+    box-shadow: 2px 2px 2px rgba(0, 0, 128, 0.712);
+}
+.anu{
+    display: flex;
+    justify-content: space-between;
+}
+.enemy-flag-game,
+.my-flag-game{
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.timer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: navy;
+    font-size: 15px;
+}
+.timer strong{
+    color: red;
+    font-size: 55px;
+}
+.anu div{
+    display: flex;
+    flex-direction: column;
+}
+.main h1{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: navy;
+    height: 50px;
+    color: white;
+    padding: 10px;
+    display: flex;
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+}
+.game-main{
+    height: 120px;
+    width: 100%;
+    position: absolute;
+    right: 0px;
+    top: 72%;
+}
