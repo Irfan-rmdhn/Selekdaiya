@@ -203,3 +203,16 @@ body{
     right: 0px;
     top: 72%;
 }
+.pause-modal{
+    position: absolute;
+    width: 1000px;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    font-family: fantasy;
+    color: black;
+    font-size: 40px;
+    background-color: rgba(83, 82, 82, 0.616);
+}
